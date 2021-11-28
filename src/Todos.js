@@ -2,7 +2,7 @@ import React from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import firebase, { auth, firestore, functions } from "./firebase";
 
-const addTodo = functions.httpsCallable("addTodo");
+// const addTodo = functions.httpsCallable("addTodo");
 
 const Todos = () => {
   const [todo, setTodo] = React.useState("");
@@ -14,8 +14,8 @@ const Todos = () => {
   };
   const submitTodo = (e) => {
     e.preventDefault();
-    // todosRef.add({
-    addTodo({
+    todosRef.add({
+      // addTodo({ // If you want to use functions uncomment this
       text: todo,
       complete: false,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
